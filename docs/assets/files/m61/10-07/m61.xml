@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE report [
+  <!ENTITY ReportGLVoucherTemplate SYSTEM "..\Include\XML\ReportGLVoucherTemplate.xml">
+]>
+
+<report xmlns="urn:schemas-arito:struct-report">
+  <query>
+    <text>
+      <![CDATA[
+select  a.so_ct, a.dien_giai, a.ma_nt, a.ong_ba, a.ma_bp, b.ten_bp, dbo.AritoFunctionReadCurrency(a.ma_nt, a.t_tien, '@@lan') as t_tt_in_word
+	  , replace(str(day(a.ngay_ct),2),' ','0') day, replace(str(month(a.ngay_ct),2),' ','0') month, cast(year(a.ngay_ct) as char(4)) year, a.ngay_ct
+	from m61 a with(nolock)
+  left join dmbp b on a.ma_bp = b.ma_bp
+	where a.id = @id
+
+select row_number() over(order by a.id asc) as stt, a.ma_vt, b.ten_vt, b.ten_vt2
+  , a.ma_kho, a.dvt, a.so_luong, a.gia, a.tien, a.ngay_yc
+  from d61 a with(nolock)
+  left join dmvt b on a.ma_vt = b.ma_vt
+	where a.id = @id
+]]>
+    </text>
+  </query>
+
+  <forms>
+    <form id="030" fileName="m61_01" fileType="rdlc" exportExt="pdf" image="pdf" autoFillDataset="true">
+      <text v="Đề xuất mua hàng Shunta" e="Purchase proposal Shunta" o="Purchase proposal Shunta"></text>
+    </form>
+    <form id="035" fileName="m61_02" fileType="rdlc" exportExt="pdf" image="pdf" autoFillDataset="true">
+      <text v="Đề xuất mua hàng BALET" e="Purchase proposal BALET" o="Purchase proposal BALET"></text>
+    </form>
+
+
+    <!--&ReportGLVoucherTemplate;-->
+  </forms>
+
+  <fields>
+    <field name="title" type="C">
+      <text v="PHIẾU NHU CẦU VẬT TƯ" e="RECEIVING TRANSACTION" o="RECEIVING TRANSACTION"/>
+    </field>
+    <field name="h_day" type="C">
+      <text v="Ngày" e="Date" o="Date"/>
+    </field>
+    <field name="h_month" type="C">
+      <text v="tháng" e="Month" o="Month"/>
+    </field>
+    <field name="h_year" type="C">
+      <text v="năm" e="Year" o="Year"/>
+    </field>
+
+    <field name="h_so_ct" type="C">
+      <text v="Số: " e="No.: " o="No.: "/>
+    </field>
+
+    <field name="h_company" type="C">
+      <text v="Họ và tên người giao hàng:" e="Deliverer's Full Name:" o="Deliverer's Full Name:"/>
+    </field>
+    <field name="h_address" type="C">
+      <text v="Địa chỉ:" e="Address:" o="Address:"/>
+    </field>
+
+    <field name="h_stt" type="C">
+      <text v="Stt" e="No." o="No."/>
+    </field>
+    <field name="h_vt" type="C">
+      <text v="Mã vật tư" e="Item Code" o="Item Code"/>
+    </field>
+    <field name="h_ten_vt" type="C">
+      <text v="Tên vật tư" e="Item Name" o="Item Name"/>
+    </field>
+    <field name="h_dvt" type="C">
+      <text v="Đvt" e="UOM" o="UOM"/>
+    </field>
+    <field name="h_sl" type="C">
+      <text v="Số lượng" e="Quantity" o="Quantity"/>
+    </field>
+    <field name="h_gia" type="C">
+      <text v="Ngày yêu cầu" e="Price" o="Price"/>
+    </field>
+    <field name="h_kho" type="C">
+      <text v="Kho" e="Site" o="Site"/>
+    </field>
+    <field name="h_tien" type="C">
+      <text v="Tiền" e="Amount" o="Amount"/>
+    </field>
+    <field name="h_total" type="C">
+      <text v="Tổng cộng" e="Total" o="Total"/>
+    </field>
+    <field name="h_bang_chu" type="C">
+      <text v="Số tiền (viết bằng chữ):" e="Amount (in Words):" o="Amount (in Words):"/>
+    </field>
+
+		<field name="title_export" type="C">
+			<text v="Phiếu nhu cầu vật tư" e="Material requisition form" o="Material requisition form"/>
+		</field>
+  </fields>
+
+</report>

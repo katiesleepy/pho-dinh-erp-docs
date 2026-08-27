@@ -1,0 +1,129 @@
+site_name: Phổ Đình – ERP Arito
+site_description: Cơ sở tri thức dự án triển khai ERP Arito cho Công ty TNHH MTV Phổ Đình
+site_author: Dự án Phổ Đình - Arito
+docs_dir: docs
+
+theme:
+  name: material
+  language: vi
+  icon:
+    logo: material/book-open-page-variant
+    repo: fontawesome/brands/github
+  favicon: assets/favicon.png
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Chuyển sang nền tối
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Chuyển sang nền sáng
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: "#"
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search:
+      lang:
+        - vi
+        - en
+      separator: '[\s\-\.\,\;\:\(\)\[\]/]+'
+
+extra_css:
+  - assets/extra.css
+
+extra:
+  generator: false
+
+nav:
+  - Trang chủ: index.md
+  - Tổng quan:
+      - Về doanh nghiệp: 01-tong-quan/doanh-nghiep.md
+      - Ký hiệu & thuật ngữ: 01-tong-quan/ky-hieu-thuat-ngu.md
+  - Danh mục:
+      - Tài khoản kế toán: 02-danh-muc/tai-khoan-ke-toan.md
+      - Khách hàng / Nhà cung cấp: 02-danh-muc/khach-hang-ncc.md
+      - Vật tư, sản phẩm: 02-danh-muc/vat-tu-san-pham.md
+      - Tài sản / Công cụ / Thiết bị: 02-danh-muc/tai-san-cong-cu.md
+      - Template import: 02-danh-muc/template-import.md
+  - Tài chính Kế toán:
+      - Chuyển dữ liệu Quản trị → Tài chính: 03-tckt/chuyen-du-lieu.md
+      - Mua hàng & hạch toán tự động: 03-tckt/mua-hang-ke-toan.md
+      - Bán hàng: 03-tckt/ban-hang.md
+      - Quỹ – Ngân hàng: 03-tckt/quy-ngan-hang.md
+      - Kho & Hợp đồng: 03-tckt/kho-hop-dong.md
+      - Báo cáo: 03-tckt/bao-cao.md
+  - Mua hàng:
+      - Quy trình mua hàng: 04-mua-hang/quy-trinh.md
+      - Phiếu nhu cầu vật tư: 04-mua-hang/phieu-nhu-cau.md
+      - Duyệt yêu cầu: 04-mua-hang/duyet-yeu-cau.md
+      - Đơn đặt hàng: 04-mua-hang/don-dat-hang.md
+      - Phát triển sản phẩm R&D – NXU: 04-mua-hang/rd-nxu.md
+      - Báo giá & giá mua: 04-mua-hang/bao-gia.md
+  - Hóa đơn đầu vào:
+      - Tổng quan: 05-hoa-don-dau-vao/tong-quan.md
+      - 26 yêu cầu gốc: 05-hoa-don-dau-vao/yeu-cau-goc.md
+      - 15 yêu cầu bổ sung: 05-hoa-don-dau-vao/yeu-cau-bo-sung.md
+      - Mẫu kết xuất BKMV & Hạch toán: 05-hoa-don-dau-vao/bkmv-hach-toan.md
+      - Vấn đề tồn đọng: 05-hoa-don-dau-vao/van-de-ton-dong.md
+  - Giá thành:
+      - Giá thành xưởng: 06-gia-thanh/gia-thanh-xuong.md
+      - Giá thành chi nhánh: 06-gia-thanh/gia-thanh-chi-nhanh.md
+  - Biểu mẫu in:
+      - Mẫu in m61: 07-bieu-mau-in/m61.md
+  - Họp & Quyết định:
+      - Dòng thời gian: 08-hop-va-quyet-dinh/dong-thoi-gian.md
+      - Recap 02/07/2026: 08-hop-va-quyet-dinh/recap-02-07-2026.md
+      - Recap 15/07/2026: 08-hop-va-quyet-dinh/recap-15-07-2026.md
+      - Việc còn tồn: 08-hop-va-quyet-dinh/viec-con-ton.md
+  - Tài liệu gốc: tai-lieu-goc.md
+  - Cách cập nhật: cach-cap-nhat.md
